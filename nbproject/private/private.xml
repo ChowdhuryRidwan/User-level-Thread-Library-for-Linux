@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <data xmlns="http://www.netbeans.org/ns/make-project-private/1">
+        <activeConfTypeElem>3</activeConfTypeElem>
+        <activeConfIndexElem>0</activeConfIndexElem>
+    </data>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/aashutosh/NetBeansProjects/NITWThread/nitwthread.c</file>
+            <file>file:/home/aashutosh/NetBeansProjects/NITWThread/nitwmutex.h</file>
+            <file>file:/home/aashutosh/NetBeansProjects/NITWThread/terror.h</file>
+            <file>file:/home/aashutosh/NetBeansProjects/NITWThread/scheduler.c</file>
+            <file>file:/home/aashutosh/NetBeansProjects/NITWThread/utility.c</file>
+            <file>file:/home/aashutosh/NetBeansProjects/NITWThread/nitwthread.h</file>
+            <file>file:/home/aashutosh/NetBeansProjects/NITWThread/nitwmutex.c</file>
+        </group>
+    </open-files>
+</project-private>
