@@ -1,6 +1,6 @@
 /* 
  * File:   nitwmutex.h
- * Author: c147101
+ * Author: Ridwan
  *
  */
 
