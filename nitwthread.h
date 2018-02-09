@@ -1,6 +1,6 @@
 /*
  * File: nitwthread.h
- * Author: c147101
+ * Author: Ridwan
  */
 
 #ifndef NITWTHREAD_H
