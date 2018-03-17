@@ -1,3 +1,3 @@
 # User-level-Thread-Library-for-Linux
-The concept of threading within software programs is one of the most important mechanisms required for it to run effectively.  
+The concept of threading within software programs is one of the most important mechanisms required for it to run effectively. Threading in a software allows it to run multiple tasks of a program at the same time. This is one of the concept a person needs to master in order to learn about Operating Systems. So with limited knowledge I went on to create my own thread library using C language.  
 I used Context Switching method to create my library since this method gives the creator full control of scheduling (Round-Robin algorithm) the threads. This project was done out of curiosity during my leisure time. Completing this project has given me great satisfaction and an undeniable desire to create more projects in the future.
