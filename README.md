@@ -13,7 +13,7 @@ When the first task is created, the timer is set to start, and the signal handle
 
 There should also be a separate variable for storing the context of the main function, because we should note that the main function will also be scheduled just like the other tasks.
 
-One more scenario can pan out in our program: The user created a new task and the create_task function was executing, in which the addition of the new task's context into the queue is going on. Now, imagine what happens when a SIGPROF is received? The control straight away transfers to the schedule function, but the queue was in middle of the pointer operations, and so this many lead to segmentation error.
+One more scenario can pan out in our program: The user created a new task and the create_task function was executing, in which the addition of the new task's context into the queue is going on. Now, imagine what happens when a SIGPROF is received? The control straight away transfers to the schedule function, but the queue was in middle of the pointer operations, and so this may lead to segmentation error.
 
 
 
