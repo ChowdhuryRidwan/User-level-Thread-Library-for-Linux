@@ -15,5 +15,11 @@ There should also be a separate variable for storing the context of the main fun
 
 One more scenario can pan out in our program: The user created a new task and the create_task function was executing, in which the addition of the new task's context into the queue is going on. Now, imagine what happens when a SIGPROF is received? The control straight away transfers to the schedule function, but the queue was in middle of the pointer operations, and so this may lead to segmentation error.
 
+Along these lines, we characterize a ready_queue, which stores every one of the pointers to the settings of live threads like a linked list, task_count, that tallies the quantity of alive threads, Initializing capacity, that instates the sign handler for SIGPROF (here, I utilize third method for tallying the time), set every one of the qualities for the caution. 
+
+A task_create work that makes a unique circumstance and appends it with a capacity that was passed as contention to task_create and includes it into the ready_queue. 
+
+At the point when the main undertaking is made, the clock is set to begin, and the sign handler capacity will be plan which picks one setting from the ready_queue and it either sets or swaps with the present context.
+
 
 
