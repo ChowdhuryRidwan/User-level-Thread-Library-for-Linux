@@ -1,3 +1,4 @@
+//provides exclusive mutual exclusion facility
 #include"nitwmutex.h"
 
 mutex_q_ptr mutex_q;
