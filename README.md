@@ -7,6 +7,8 @@ In C, we have the datatype ucontext_t, for controlling the process context and i
 
 In the thread library, we define a ready_queue, which stores the pointers to the contexts of live threads like a linked list, task_count, that counts the number of alive threads. We also have initializing function, that initializes the signal handler for SIGPROF.
 
+When a program is started, a mutex is created with a unique name. After this stage, any thread that needs the resource must lock the mutex from other threads while it is using the resource. The mutex is set to unlock when the data is no longer needed or the routine is finished.
+
 A task_create function that create a context and attaches it with a function that was passed as argument to task_create and adds it into the ready_queue.
 
 When the first task is created, the timer is set to start, and the signal handler function chooses one context from the ready_queue and it either sets or swaps with the current context.
