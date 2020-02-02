@@ -14,7 +14,9 @@
 #include <sys/types.h>
 #include <malloc.h>
 #include "terror.h"
-
+// encloses DLL's exported functions. this allows, function overloads, a C++ feature, not available in C language.
+// the mechanism allows the same header to be used by both the C and C++ compiler
+// Produces a standard C DLL (i.e. the function use the C language mangling scheme) when building the DLL.
 #ifdef __cplusplus
 extern "C" {
 #endif // __cplusplus
