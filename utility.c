@@ -14,8 +14,9 @@ nitwthread_tcb_ptr get_new_tcb_without_stack()
         return NULL;
     
     tcb->thr_id = id++;
-    tcb->thr_context.uc_link = 0;
-    tcb->thr_context.uc_stack.ss_flags = 0;
+    tcb->thr_context.uc_link = 0; // When the function associated with the current context completes its execution, the 
+                                  // control transfers to the context pointed to by uc_link pointer.
+    tcb->thr_context.uc_stack.ss_flags = 0; // controls the process context
     tcb->blockedthr = NULL;
     tcb->pid = getpid();
     tcb->state = READY;
@@ -57,6 +58,7 @@ nitwthread_tcb_ptr get_new_tcb()
     return tcb;
 }
 
+// Atomic operations allow for concurrent algorithms and access to certain shared data types without the use of mutexes.
 nitwthread_tcb_ptr get_current_tcb_ptr_atomically()
 {
     nitwthread_tcb_ptr tcb = NULL;
