@@ -90,9 +90,9 @@ int nitwthread_create(nitwthread_t *thread_id, nitwthread_attr_t *attr,
     if(ready_q == NULL)
         nitwthread_init();
     
-    sigprocmask(SIG_BLOCK, &sig_proc_mask, NULL);
-    nitwthread_tcb_ptr tcb = get_new_tcb_without_stack();
-    if(tcb == NULL)
+    sigprocmask(SIG_BLOCK, &sig_proc_mask, NULL);   // used to fetch and/or change the signal mask of the calling thread.
+    nitwthread_tcb_ptr tcb = get_new_tcb_without_stack(); // The signal mask is the set of signals whose delivery is currently
+    if(tcb == NULL)                                       // blocked for the caller
         return NOT_ENOUGH_MEMORY;
     getcontext(&(tcb->thr_context));
     tcb->thr_context.uc_stack.ss_sp = malloc(THREAD_STACK_SIZE);
