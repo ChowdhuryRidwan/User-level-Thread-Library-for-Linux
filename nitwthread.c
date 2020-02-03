@@ -12,8 +12,8 @@ int nitwthread_init()
 {
     if(ready_q == NULL && dead_q == NULL)
     {
-        sigemptyset(&sig_proc_mask);
-        sigaddset(&sig_proc_mask, SIGPROF);
+        sigemptyset(&sig_proc_mask);       // initializes the signal set given by set to empty, with all signals excluded from the set
+        sigaddset(&sig_proc_mask, SIGPROF);// add signal from set. 
         ignore_signal = 0;
         
         dead_q = (completed_tcb_queue_ptr)
@@ -54,7 +54,7 @@ int nitwthread_init()
     return SUCCESS;
 }
 
-//wrapper function for threads
+//wrapper(subroutine) function for threads
 //pushes thread into completed queue on completion
 //sets proper return value
 void *wrapper_function(void *(*start_routine)(void *), void *arg)
@@ -79,6 +79,10 @@ void *wrapper_function(void *(*start_routine)(void *), void *arg)
     sigprocmask(SIG_UNBLOCK, &sig_proc_mask, NULL);
     return ret_val;
 }
+// Creating a thread here. nitwthread_t *thread_id: thread object that contains threadid.
+// nitwthread_attr_t *attr: attributes that apply to this thread
+// void *(*start_routine)(void*): the function this thread executes
+// void* arg: arguements to pass to this funtion
 
 int nitwthread_create(nitwthread_t *thread_id, nitwthread_attr_t *attr, 
                                 void *(*start_routine)(void*), void* arg)
@@ -112,6 +116,10 @@ int nitwthread_create(nitwthread_t *thread_id, nitwthread_attr_t *attr,
     return SUCCESS;
 }
 
+// suspends the calling thread to wait for successful termination of the thread specified as the first argument
+// nitwthread_t thread with an optional *status data passed from the terminating threads call to nitwthread_exit() 
+// thread join is a protocol to allow the programmer to collect all relevant threads at a logical synchronization point.
+// the thread that executes a join has terminated execution of their respective thread function
 int nitwthread_join(nitwthread_t thread, void **status)
 {
     sigprocmask(SIG_BLOCK, &sig_proc_mask, NULL);
@@ -170,7 +178,8 @@ int nitwthread_join(nitwthread_t thread, void **status)
     return SUCCESS;
 }
 
-
+// basically a barrier to synchronize a set of threads at some point in time by having all participating threads
+// in the barrier wait until all threads have called the function.
 void clear_blocked_threads(nitwthread_tcb_ptr target_node) {
     waiting_list_ptr blocked_list = target_node->blockedthr;
 
@@ -189,6 +198,7 @@ void clear_blocked_threads(nitwthread_tcb_ptr target_node) {
     target_node->state = COMPLETED;
 }
 
+// Thread cancellation allows a thread to terminate the execution of any other thread in the process.
 int nitwthread_cancel(nitwthread_t thread) 
 {
     sigprocmask(SIG_BLOCK, &sig_proc_mask, NULL);
@@ -210,6 +220,7 @@ int nitwthread_cancel(nitwthread_t thread)
     return INVALID_OPERATION;
 }
 
+// terminates the thread and provides the pointer *retval available to any nitwthread_join() call.
 void nitwthread_exit(void *retval)
 {
     sigprocmask(SIG_BLOCK, &sig_proc_mask, NULL);
