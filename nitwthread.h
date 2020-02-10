@@ -22,10 +22,10 @@ extern "C" {
 #endif // __cplusplus
 
 #define MAX_THREADS_NUM 1000  //queue can hold upto 1000.
-#define TIME_SLICE_VAL 10000
-#define THREAD_STACK_SIZE (1024*32)
-#define READY 1001
-#define BLOCKED 1002
+#define TIME_SLICE_VAL 10000  //10ms for each thread
+#define THREAD_STACK_SIZE (1024*32) // telling thread to do a task through function pointer. contains parameters, returning function pointers.
+#define READY 1001 // ready queue 1001
+#define BLOCKED 1002 // blocked state. threads need to use a definite resource, but one thread is already using the resource. then waiting thread is blocked
 #define RUNNING 1003
 #define WAITING 1004
 #define KILLED 1005
