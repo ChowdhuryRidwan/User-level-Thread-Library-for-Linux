@@ -21,7 +21,7 @@
 extern "C" {
 #endif // __cplusplus
 
-#define MAX_THREADS_NUM 1000
+#define MAX_THREADS_NUM 1000  //queue can hold upto 1000.
 #define TIME_SLICE_VAL 10000
 #define THREAD_STACK_SIZE (1024*32)
 #define READY 1001
